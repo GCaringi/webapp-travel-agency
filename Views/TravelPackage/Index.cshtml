@@ -1,7 +1,12 @@
-﻿@page
-@model webapp_travel_agency.Views.TravelPackage.Index
+﻿@model List<TravelPackage>
 
 @{
     Layout = "_Layout";
 }
 
+<div>
+    @foreach (var travel in @Model)
+    {
+        <div>@travel.Title</div>
+    }
+</div>

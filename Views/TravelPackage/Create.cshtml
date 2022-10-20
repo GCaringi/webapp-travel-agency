@@ -1,0 +1,57 @@
+﻿@model TravelPackage
+@{
+    Layout = "_Layout";
+}
+
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form method="post" asp-action="Create">
+                    @Html.AntiForgeryToken()
+                    <div class="mb-3">
+                        <label asp-for="Title" for="title" class="form-label">Titolo dell'offerta*</label>
+                        <input asp-for="Title" type="text" class="form-control" id="title">
+                        <span class="text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="DepartureDate" for="departurDate" class="form-label">Departur Date</label>
+                        <input asp-for="DepartureDate" type="date" class="form-control" id="departurDate">
+                        <span class="text-danger" asp-validation-for="DepartureDate"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ReturnDate" for="returnDate" class="form-label">Return Date</label>
+                        <input asp-for="ReturnDate" type="date" class="form-control" id="returnDate">
+                        <span class="text-danger" asp-validation-for="ReturnDate"></span>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <label asp-for="Description" class="form-label" for="description">Descrizione</label>
+                        <textarea asp-for="Description" id="description" class="form-control"></textarea>
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Price" class="form-label" for="price"></label>
+                        <input asp-for="Price" type="number" class="form-control" step="any" id="price"/>€
+                        <span class="text-danger" asp-validation-for="Price"></span>
+                    </div>
+                    <div>
+                        <label asp-for="AvailablePlaces" class="form-label" for="availablePlaces"></label>
+                        <input asp-for="AvailablePlaces" type="number" class="form-control" step="any" id="availablePlaces"/>€
+                        <span class="text-danger" asp-validation-for="AvailablePlaces"></span>
+                    </div>
+                    <div>
+                        <label asp-for="UrlImage" class="form-label" for="urlImage"></label>
+                        <input asp-for="UrlImage" type="text" class="form-control" step="any" id="urlImage"/>€
+                        <span class="text-danger" asp-validation-for="UrlImage"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Destination" class="form-label" for="destination"></label>
+                        <input asp-for="Destination" type="text" class="form-control" step="any" id="destination"/>€
+                        <span class="text-danger" asp-validation-for="Destination"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
