@@ -6,6 +6,17 @@
     <div class="row" id="mainPage">
     </div>
 </div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <label></label>
+            <input id="input" type="text"/>
+            <button id="btnSearch" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <div class="row" id="searchPage">
+    </div>
+</div>
 
 @section Scripts
 {
@@ -13,6 +24,8 @@
         
         let apiResult = [];
         const container = document.getElementById('mainPage');
+        const searchContainer = document.getElementById('searchPage');
+        const button = document.getElementById('btnSearch');
         
         axios.get("api/packages")
         .then(response => 
@@ -39,6 +52,26 @@
         .catch(
             error => console.log(error)
         )
+        
+        function searchByName(name){
+            console.log("Inside");
+            let filter = apiResult.filter(elem => elem.title.toLowerCase().includes(name.toLowerCase()));
+            console.log(filter);
+            filter.forEach(elem =>
+                {
+                    searchContainer.innerHTML +=
+                    `
+                    <h6>${elem.title}</h6>
+                    `
+                })
+        }
+        
+        button.addEventListener('click', () => {
+            searchContainer.innerHTML = "";
+            let input = document.getElementById('input').value;
+            searchByName(input);
+        })
+        
         
     </script>
 }
