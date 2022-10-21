@@ -1,4 +1,5 @@
 ﻿@model TravelPackage
+
 @{
     Layout = "_Layout";
 }
@@ -7,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form method="post" asp-action="Create">
+                <form method="post" asp-controller="TravelPackage" asp-route-id="@Model.Id" asp-action="Edit">
                     @Html.AntiForgeryToken()
                     <div class="mb-3">
                         <label asp-for="Title" for="title" class="form-label">Titolo dell'offerta*</label>
@@ -55,3 +56,5 @@
         </div>
     </div>
 </div>
+
+
