@@ -2,7 +2,43 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row" id="mainPage">
+    </div>
 </div>
+
+@section Scripts
+{
+    <script>
+        
+        let apiResult = [];
+        const container = document.getElementById('mainPage');
+        
+        axios.get("api/packages")
+        .then(response => 
+            {
+                apiResult = response.data;
+                console.log(apiResult);
+                apiResult.forEach(elem => {
+                   container.innerHTML += 
+                   `
+                    <div class="col-4">
+                        <div class="card"> 
+                          <h4 class="text-center mt-2">${elem.title}</h4>
+                          <div class="card-body">
+                            <p class="card-text text-center">${elem.description}</p> 
+                            <p class="text-end">${elem.price} €</p>
+                            <a href="Home/Detail/${elem.id}" class="btn btn-primary">See more...</a> 
+                          </div> 
+                        </div>
+                    </div>
+                   `
+                });         
+            }
+        )
+        .catch(
+            error => console.log(error)
+        )
+        
+    </script>
+}
